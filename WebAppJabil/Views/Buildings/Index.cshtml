@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebAppJabil.Buildings>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Buildings</h2>
+
+<p>
+    @Html.ActionLink("Alta Nuevo Building", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Building)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PKBuilding)
+            &nbsp;&nbsp;&nbsp;
+            @Html.DisplayFor(modelItem => item.Building)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PKBuilding }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PKBuilding }) 
+            @*@Html.ActionLink("Borrar", "Delete", new { id=item.PKBuilding })*@
+        </td>
+    </tr>
+}
+
+</table>

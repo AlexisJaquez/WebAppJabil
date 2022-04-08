@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebAppJabil.PartNumbers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Part Numbers</h2>
+
+<p>
+    @Html.ActionLink("Alta Nuevo Part Number", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.Customer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Available)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.Customer)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PKPartNumber }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PKPartNumber }) 
+            @*@Html.ActionLink("Borrar", "Delete", new { id=item.PKPartNumber })*@
+        </td>
+    </tr>
+}
+
+</table>
